@@ -45,7 +45,7 @@
         <div class="page-logo">
             <a href="{{ url('/backend') }}">
                 <img src="{{ url('assets') }}/backend/layouts/layout4/img/logo-small.png" alt="logo" class="" style="margin-top: 3px;width: 69px;"/> </a>
-            <div class="menu-toggler sidebar-toggler">
+            <div class="menu-toggler sidebar-toggler" >
                 <!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->
             </div>
         </div>
@@ -70,7 +70,8 @@
                     </li>
                     <!-- END USER LOGIN DROPDOWN -->
                     <!-- BEGIN QUICK SIDEBAR TOGGLER -->
-                    <li class="quick-sidebar-toggler">
+                    <li class="quick-sidebar-toggler" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
 
                             <span class="sr-only"><a href="{{ url('logout') }}">Toggle Quick Sidebar</a></span>
                             <i class="icon-logout"></i>
@@ -226,10 +227,7 @@
 <script src="{{ url('assets') }}/backend/layouts/layout4/scripts/demo.min.js" type="text/javascript"></script>
 <!-- END THEME LAYOUT SCRIPTS -->
 <script>
-    $(".quick-sidebar-toggler").click(function () {
-        event.preventDefault();
-        document.getElementById('logout-form').submit();
-    })
+
 </script>
 </body>
 </html>
