@@ -53,7 +53,8 @@ class DanaController extends Controller
 
     public function show($id)
     {
-        //
+        $model = Dana::findOrfail($id);
+        return view('bendahara.dana.detail',['model'=>$model]);
     }
 
     public function edit($id)
