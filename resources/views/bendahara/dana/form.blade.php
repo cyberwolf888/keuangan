@@ -82,10 +82,12 @@
                             <label for="status">Status</label>
                         </div>
 
+                        @if(isset($update))
                         <div class="form-group form-md-line-input {{ $errors->has('sisa') ? ' has-error' : '' }}">
                             {!! Form::number('sisa', $model->sisa, ['id'=>'sisa','placeholder'=>'','class'=>'form-control', 'required','min'=>0]) !!}
                             <label for="harga">Sisa Dana</label>
                         </div>
+                        @endif
 
                         <div class="form-group last">
                             <div class="fileinput fileinput-new" data-provides="fileinput">

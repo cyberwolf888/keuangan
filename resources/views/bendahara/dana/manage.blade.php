@@ -105,7 +105,7 @@
                                     <td> {{ $row->penerima }} </td>
                                     <td> {{ $row->getStatus() }} </td>
                                     <td class="center" width="100">
-                                        <a href="{{ route('bendahara.dana.edit',$row->id) }}" class="btn yellow-saffron btn-xs"><i class="fa fa-pencil"></i></a>
+                                        @if($row->status == 1) <a href="{{ route('bendahara.dana.edit',$row->id) }}" class="btn yellow-saffron btn-xs"><i class="fa fa-pencil"></i></a> @endif
                                         <a href="{{ route('bendahara.dana.detail',$row->id) }}" class="btn green-steel btn-xs"><i class="fa fa-eye"></i></a>
                                     </td>
                                 </tr>

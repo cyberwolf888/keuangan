@@ -43,7 +43,8 @@ class DanaController extends Controller
         $model->jumlah = $request->jumlah;
         $model->penerima = $request->penerima;
         $model->bukti = $file->basename;
-        $model->sisa = $request->sisa;
+        //$model->sisa = $request->sisa;
+        $model->sisa = 0;
         $model->status = $request->status;
         $model->keterangan = $request->keterangan;
         $model->save();
