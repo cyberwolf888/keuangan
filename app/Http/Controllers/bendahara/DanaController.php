@@ -29,23 +29,21 @@ class DanaController extends Controller
         $this->validate($request, [
             'tgl_keluar' => 'required',
             'jumlah' => 'required|max:11|alpha_num',
-            'penerima' => 'required|max:100',
-            'status' => 'required|max:11|alpha_num',
-            'image' => 'required|image|max:3500'
+            'penerima' => 'required|max:100'
         ]);
 
-        $path = base_path('img/bukti/');
-        $file = Image::make($request->file('image'))->resize(800, 600)->encode('jpg', 80)->save($path.md5(str_random(12)).'.jpg');
+        //$path = base_path('img/bukti/');
+        //$file = Image::make($request->file('image'))->resize(800, 600)->encode('jpg', 80)->save($path.md5(str_random(12)).'.jpg');
 
         $model = new Dana();
         $model->user_id = Auth::id();
         $model->tgl_keluar = date('Y/m/d',strtotime($request->tgl_keluar));
         $model->jumlah = $request->jumlah;
         $model->penerima = $request->penerima;
-        $model->bukti = $file->basename;
+        //$model->bukti = $file->basename;
         //$model->sisa = $request->sisa;
         $model->sisa = 0;
-        $model->status = $request->status;
+        $model->status = 1;
         $model->keterangan = $request->keterangan;
         $model->save();
 
@@ -67,9 +65,6 @@ class DanaController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'tgl_keluar' => 'required',
-            'jumlah' => 'required|max:11|alpha_num',
-            'penerima' => 'required|max:100',
             'status' => 'required|max:11|alpha_num',
             'image' => 'image|max:3500'
         ]);
@@ -85,13 +80,8 @@ class DanaController extends Controller
             $model->bukti = $file->basename;
         }
 
-        $model->user_id = Auth::id();
-        $model->tgl_keluar = date('Y/m/d',strtotime($request->tgl_keluar));
-        $model->jumlah = $request->jumlah;
-        $model->penerima = $request->penerima;
         $model->sisa = $request->sisa;
         $model->status = $request->status;
-        $model->keterangan = $request->keterangan;
         $model->save();
 
         return redirect()->route('bendahara.dana.manage');

@@ -89,7 +89,9 @@
                         <tr>
                             <td>
                                 <h4><small>Bukti</small></h4>
+                                @if($model->bukti != "")
                                 <h4><img src="{{ url('img/bukti/'.$model->bukti) }}" class="img-responsive"> </h4>
+                                @endif
                             </td>
                         </tr>
                         </tbody>

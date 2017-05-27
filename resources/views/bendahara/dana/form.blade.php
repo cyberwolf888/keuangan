@@ -62,32 +62,19 @@
                             </div>
                         @endif
 
-                        <div class="form-group form-md-line-input {{ $errors->has('tgl_keluar') ? ' has-error' : '' }}">
-                            {!! Form::text('tgl_keluar', $model->tgl_keluar, ['id'=>'tgl_keluar','placeholder'=>'','class'=>'form-control date-picker', 'required', 'readonly']) !!}
-                            <label for="tgl_keluar">Tanggal Keluar</label>
-                        </div>
 
-                        <div class="form-group form-md-line-input {{ $errors->has('jumlah') ? ' has-error' : '' }}">
-                            {!! Form::number('jumlah', $model->jumlah, ['id'=>'jumlah','placeholder'=>'','class'=>'form-control', 'min'=>0, 'required']) !!}
-                            <label for="jumlah">Jumlah</label>
-                        </div>
 
-                        <div class="form-group form-md-line-input {{ $errors->has('penerima') ? ' has-error' : '' }}">
-                            {!! Form::text('penerima', $model->penerima, ['id'=>'penerima','placeholder'=>'','class'=>'form-control', 'required']) !!}
-                            <label for="penerima">Penerima</label>
-                        </div>
-
+                        @if(isset($update))
                         <div class="form-group form-md-line-input {{ $errors->has('status') ? ' has-error' : '' }}">
                             {!! Form::select('status', ['1'=>'Proses','2'=>'Selesai'], $model->status,['id'=>'status','placeholder'=>'','class'=>'form-control', 'required']) !!}
                             <label for="status">Status</label>
                         </div>
 
-                        @if(isset($update))
                         <div class="form-group form-md-line-input {{ $errors->has('sisa') ? ' has-error' : '' }}">
                             {!! Form::number('sisa', $model->sisa, ['id'=>'sisa','placeholder'=>'','class'=>'form-control', 'required','min'=>0]) !!}
                             <label for="harga">Sisa Dana</label>
                         </div>
-                        @endif
+
 
                         <div class="form-group last">
                             <div class="fileinput fileinput-new" data-provides="fileinput">
@@ -103,11 +90,29 @@
                                 </div>
                             </div>
                         </div>
+                        @else
+                        <div class="form-group form-md-line-input {{ $errors->has('tgl_keluar') ? ' has-error' : '' }}">
+                            {!! Form::text('tgl_keluar', $model->tgl_keluar, ['id'=>'tgl_keluar','placeholder'=>'','class'=>'form-control date-picker', 'required', 'readonly']) !!}
+                            <label for="tgl_keluar">Tanggal Keluar</label>
+                        </div>
+
+                        <div class="form-group form-md-line-input {{ $errors->has('jumlah') ? ' has-error' : '' }}">
+                            {!! Form::number('jumlah', $model->jumlah, ['id'=>'jumlah','placeholder'=>'','class'=>'form-control', 'min'=>0, 'required']) !!}
+                            <label for="jumlah">Jumlah</label>
+                        </div>
+
+                        <div class="form-group form-md-line-input {{ $errors->has('penerima') ? ' has-error' : '' }}">
+                            {!! Form::text('penerima', $model->penerima, ['id'=>'penerima','placeholder'=>'','class'=>'form-control', 'required']) !!}
+                            <label for="penerima">Penerima</label>
+                        </div>
 
                         <div class="form-group form-md-line-input {{ $errors->has('keterangan') ? ' has-error' : '' }}">
                             {!! Form::textarea('keterangan', $model->keterangan, ['id'=>'keterangan','placeholder'=>'','class'=>'form-control']) !!}
                             <label for="keterangan">Keterangan</label>
                         </div>
+                        @endif
+
+
 
                     </div>
                     <div class="form-actions noborder">
